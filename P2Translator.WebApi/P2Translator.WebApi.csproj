@@ -2,6 +2,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\P2Translator.Data\P2Translator.Data.csproj" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -13,6 +15,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
 
 
