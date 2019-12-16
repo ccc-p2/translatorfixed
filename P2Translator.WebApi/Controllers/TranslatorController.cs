@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using P2Translator.Data;
+using P2Translator.Data.Models;
+using P2Translator.WebApi.Models;
+using System;
 
 namespace P2Translator.WebApi.Controllers 
 {
@@ -35,6 +38,40 @@ namespace P2Translator.WebApi.Controllers
         Content = c.Content,
         MessageDateTime = c.MessageDateTime
       }).ToList();
+    }
+    [HttpGet]
+    public async Task<IActionResult> GetMessages()
+    {
+      return await Task.FromResult(Ok(_db.Message.ToList()));
+    }
+
+    [HttpGet("{language}")]
+    public async Task<IActionResult> GetMessages(string language)
+    {
+      List<Message> messages = _db.Message.ToList();
+      List<Message> translatedMessageList = new List<Message>();
+      Translator tr = new Translator();
+      foreach(Message m in messages)
+      {
+        Message translatedMessage = new Message();
+        translatedMessage.Content = await tr.Translate(m.Content, language);
+        translatedMessage.MessageDateTime = m.MessageDateTime;
+        translatedMessage.MessageId = m.MessageId;
+        translatedMessageList.Add(translatedMessage);
+      }
+      return await Task.FromResult(Ok(translatedMessageList));
+    }
+    [HttpPost]
+    public async Task<IActionResult> Post(Message m)
+    {
+      if(ModelState.IsValid)
+      {
+        m.MessageDateTime = DateTime.Now;
+        _db.Message.Add(m);
+        await _db.SaveChangesAsync();
+        return await Task.FromResult(Ok(m));
+      }
+      return await Task.FromResult(NotFound(m));
     }
   }
 }
