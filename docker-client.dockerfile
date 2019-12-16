@@ -8,5 +8,4 @@ FROM mcr.microsoft.com/dotnet/core/aspnet
 WORKDIR /dist
 ENV ASPNETCORE_ENVIRONMENT=development
 COPY --from=build /aspnet/out .
-RUN ls -a
 CMD ["dotnet", "P2Translator.Client.dll"]

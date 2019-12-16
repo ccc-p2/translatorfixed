@@ -8,32 +8,31 @@ services:
   mvc:
     image: mvc:latest
     depends_on: 
-      - "webapi"
+      - "api"
     build:
       context: ../P2Translator
-      dockerfile: docker-client.yml
+      dockerfile: docker-client
     expose:
       - "6000"
     ports:
       - "6000:6000"
     volumes:
       - ./P2Translator.Client:/usr/src/app/
-    links:
-      - webapi
 
-  webapi:
-    image: webapi:latest
+
+  api:
+    image: api:latest
     depends_on: 
       - "postgres_image"
     build: 
       context: ../P2Translator
-      dockerfile: docker-webapi.yml
+      dockerfile: docker-api
     volumes: 
       - ./P2Translator.WebApi:/usr/src/app
     expose: 
-      - "8000"
+      - "5000"
     ports:
-      - "8000:80"
+      - "5000:80"
     environment: 
       DB_CONNECTION_STRING: "host:postgres_image;port:5432;database:postgres;username:postgres;password:postgres"
     networks: 

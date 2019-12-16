@@ -30,6 +30,11 @@ namespace P2Translator.WebApi
             services.AddControllers();
 
             var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+            if(connectionString == null)
+            {
+              Environment.SetEnvironmentVariable("DB_CONNECTION_STRING", "host:postgres_image;port:5432;database:postgres;username:postgres;password:postgres");
+              connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+            }            
             services.AddDbContext<P2TranslatorDbContext>(options => options.UseNpgsql(connectionString));
         }
 
