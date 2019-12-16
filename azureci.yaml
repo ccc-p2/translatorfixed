@@ -43,7 +43,7 @@ stages:
               /d:sonar.coverage.exclusions=**/P2Translator.Client/wwwroot/** \
               /d:sonar.cs.opencover.reportsPaths=**/P2Translator.Testing/coverage.opencover.xml \
               /d:sonar.cs.vstest.reportsPaths=**/*.trx \
-              /o:1910-oct21-dotnet
+              /o:ccc-p2
               dotnet build ./P2Translator.sln
               dotnet test ./P2Translator.sln --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
               dotnet sonarscanner end /d:sonar.login=$SONAR_TOKEN
