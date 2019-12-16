@@ -11,7 +11,12 @@ namespace P2Translator.WebApi.Controllers
   [ApiController]
   public class TranslatorController : ControllerBase
   {
-    private P2TranslatorDbContext _db = new P2TranslatorDbContext();
+    
+    private readonly P2TranslatorDbContext _db;
+    public TranslatorController(P2TranslatorDbContext _db)
+    {
+        this._db = _db;
+    }
 
     [HttpGet]
     public IActionResult GetLanguages()

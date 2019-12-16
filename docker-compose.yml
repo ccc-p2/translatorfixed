@@ -1,0 +1,52 @@
+version: '3'
+
+networks:
+  translatorapi-dev:
+    driver: bridge
+
+services:
+  mvc:
+    image: mvc:latest
+    depends_on: 
+      - "webapi"
+    build:
+      context: ../P2Translator
+      dockerfile: docker-client.yml
+    expose:
+      - "6000"
+    ports:
+      - "6000:6000"
+    volumes:
+      - ./P2Translator.Client:/usr/src/app/
+    links:
+      - webapi
+
+  webapi:
+    image: webapi:latest
+    depends_on: 
+      - "postgres_image"
+    build: 
+      context: ../P2Translator
+      dockerfile: docker-webapi.yml
+    volumes: 
+      - ./P2Translator.WebApi:/usr/src/app
+    expose: 
+      - "8000"
+    ports:
+      - "8000:80"
+    environment: 
+      DB_CONNECTION_STRING: "host:postgres_image;port:5432;database:postgres;username:postgres;password:postgres"
+    networks: 
+      - translatorapi-dev
+
+  postgres_image:
+    image: postgres:alpine
+    ports: 
+      - "5432"
+    restart: always
+    environment: 
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "postgres"
+    networks: 
+      - translatorapi-dev
