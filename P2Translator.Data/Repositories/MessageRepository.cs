@@ -7,7 +7,11 @@ namespace P2Translator.Data.Repositories
 {
     public class MessageRepository
     {
-      private static readonly P2TranslatorDbContext _db = new P2TranslatorDbContext();
+    private readonly P2TranslatorDbContext _db;
+    public MessageRepository(P2TranslatorDbContext _db)
+    {
+        this._db = _db;
+    }
     public List<Message> GetAllMessages()
     {
       return _db.Message.ToList();

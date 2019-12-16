@@ -15,7 +15,7 @@ namespace P2Translator.Client.Models
       client.BaseAddress = new Uri("http://localhost:5000/");
       client.DefaultRequestHeaders.Accept.Clear();
       client.DefaultRequestHeaders.Accept.Add(
-          new MediaTypeWithQualityHeaderValue("application/json"));
+      new MediaTypeWithQualityHeaderValue("application/json"));
   }
     public async Task<List<MessageViewModel>> GetMessagesAsync(string path)
     {
