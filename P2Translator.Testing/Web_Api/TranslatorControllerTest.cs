@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using P2Translator.WebApi.Controllers;
 using Xunit;
 
@@ -9,8 +10,8 @@ namespace P2Translator.Testing.Web_Api
     public void TestGetAllLanguages()
     {
       var sut = new TranslatorController();
-      var actual = sut.GetLanguages();
-      Assert.True(actual.Length > 1);
+      var actual = sut.GetLanguages() as List<string>;
+      Assert.True(actual.Count > 1);
     }
   }
 }
