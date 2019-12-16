@@ -22,7 +22,7 @@ namespace P2Translator.Data
     {
       base.OnModelCreating(modelBuilder);
 
-      modelBuilder.HasSequence<int>("MessageId").StartsAt(4).IncrementsBy(1);
+      modelBuilder.HasSequence<int>("MessageId").StartsAt(3).IncrementsBy(1);
       modelBuilder.Entity<Message>(o => o.HasKey(k => k.MessageId));
       modelBuilder.Entity<Message>().Property(p => p.MessageId).HasDefaultValueSql("nextval('\"MessageId\"')");
 
