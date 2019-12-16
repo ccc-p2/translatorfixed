@@ -1,37 +1,87 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\studio pc\\revature_project\\P2Translator\\P2Translator.WebApi\\P2Translator.WebApi.csproj": {}
+    "/Users/hermanramos/Documents/revature_projects/project_2/translator_challenge/p2-translator-team/P2Translator.WebApi/P2Translator.WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\studio pc\\revature_project\\P2Translator\\P2Translator.WebApi\\P2Translator.WebApi.csproj": {
+    "/Users/hermanramos/Documents/revature_projects/project_2/translator_challenge/p2-translator-team/P2Translator.Data/P2Translator.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\studio pc\\revature_project\\P2Translator\\P2Translator.WebApi\\P2Translator.WebApi.csproj",
-        "projectName": "P2Translator.WebApi",
-        "projectPath": "C:\\Users\\studio pc\\revature_project\\P2Translator\\P2Translator.WebApi\\P2Translator.WebApi.csproj",
-        "packagesPath": "C:\\Users\\studio pc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\studio pc\\revature_project\\P2Translator\\P2Translator.WebApi\\obj\\",
+        "projectUniqueName": "/Users/hermanramos/Documents/revature_projects/project_2/translator_challenge/p2-translator-team/P2Translator.Data/P2Translator.Data.csproj",
+        "projectName": "P2Translator.Data",
+        "projectPath": "/Users/hermanramos/Documents/revature_projects/project_2/translator_challenge/p2-translator-team/P2Translator.Data/P2Translator.Data.csproj",
+        "packagesPath": "/Users/hermanramos/.nuget/packages/",
+        "outputPath": "/Users/hermanramos/Documents/revature_projects/project_2/translator_challenge/p2-translator-team/P2Translator.Data/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\studio pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+          "/Users/hermanramos/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/hermanramos/Documents/revature_projects/project_2/translator_challenge/p2-translator-team/P2Translator.WebApi/P2Translator.WebApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/hermanramos/Documents/revature_projects/project_2/translator_challenge/p2-translator-team/P2Translator.WebApi/P2Translator.WebApi.csproj",
+        "projectName": "P2Translator.WebApi",
+        "projectPath": "/Users/hermanramos/Documents/revature_projects/project_2/translator_challenge/p2-translator-team/P2Translator.WebApi/P2Translator.WebApi.csproj",
+        "packagesPath": "/Users/hermanramos/.nuget/packages/",
+        "outputPath": "/Users/hermanramos/Documents/revature_projects/project_2/translator_challenge/p2-translator-team/P2Translator.WebApi/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/hermanramos/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "/Users/hermanramos/Documents/revature_projects/project_2/translator_challenge/p2-translator-team/P2Translator.Data/P2Translator.Data.csproj": {
+                "projectPath": "/Users/hermanramos/Documents/revature_projects/project_2/translator_challenge/p2-translator-team/P2Translator.Data/P2Translator.Data.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -60,7 +110,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.100/RuntimeIdentifierGraph.json"
         }
       }
     }
