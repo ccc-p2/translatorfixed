@@ -22,10 +22,15 @@ namespace P2Translator.Data
     {
       base.OnModelCreating(modelBuilder);
 
-      modelBuilder.HasSequence<int>("MessageId").StartsAt(100).IncrementsBy(2);
+      modelBuilder.HasSequence<int>("MessageId").StartsAt(4).IncrementsBy(1);
       modelBuilder.Entity<Message>(o => o.HasKey(k => k.MessageId));
       modelBuilder.Entity<Message>().Property(p => p.MessageId).HasDefaultValueSql("nextval('\"MessageId\"')");
 
+      modelBuilder.Entity<Message>().HasData(new List<Message>()
+      {
+        new Message(){ MessageId = 1, Content = "first message", MessageDateTime = DateTime.Now},
+        new Message(){ MessageId = 2, Content = "second message", MessageDateTime = DateTime.Now}
+      });
     }
   }
 }
