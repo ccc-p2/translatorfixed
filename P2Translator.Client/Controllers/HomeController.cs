@@ -11,8 +11,10 @@ using P2Translator.Client.Models;
 
 namespace P2Translator.Client.Controllers
 {
+  [Route("/[controller]/[action]")]
     public class HomeController : Controller
     {
+        private readonly HttpClientModel _http = new HttpClientModel();
 
         private readonly ILogger<HomeController> _logger;
 
@@ -21,8 +23,10 @@ namespace P2Translator.Client.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
+        public async Task<IActionResult> Index()
+        { 
+            string url = "http://localhost:5000/api/translator/getlanguages";
+            var allLanguages = await _http.GetLanguagesAsync(url);
             return View();
         }
 
