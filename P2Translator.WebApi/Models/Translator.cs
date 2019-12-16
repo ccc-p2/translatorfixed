@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Translator.Domain.Models
+namespace P2Translator.WebApi.Models
 {
   public class Translator
   {
