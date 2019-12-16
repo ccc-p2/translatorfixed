@@ -11,7 +11,7 @@ services:
       - "api"
     build:
       context: ../P2Translator
-      dockerfile: docker-client
+      dockerfile: docker-client.dockerfile
     expose:
       - "6000"
     ports:
@@ -26,13 +26,13 @@ services:
       - "postgres_image"
     build: 
       context: ../P2Translator
-      dockerfile: docker-api
+      dockerfile: docker-api.dockerfile
     volumes: 
       - ./P2Translator.WebApi:/usr/src/app
     expose: 
       - "5000"
     ports:
-      - "5000:80"
+      - "5000:5000"
     environment: 
       DB_CONNECTION_STRING: "host:postgres_image;port:5432;database:postgres;username:postgres;password:postgres"
     networks: 

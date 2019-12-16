@@ -25,7 +25,7 @@ namespace P2Translator.Client.Controllers
 
         public async Task<IActionResult> Index()
         { 
-            string url = "http://localhost:5000/api/translator/getlanguages";
+            string url = "api/translator/getlanguages";
             var allLanguages = await _http.GetLanguagesAsync(url);
             return View();
         }
