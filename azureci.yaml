@@ -36,7 +36,7 @@ stages:
           - script: dotnet tool install --global dotnet-sonarscanner
           - script: |
               dotnet sonarscanner begin \
-              /k:p2-translator-team \
+              /k:p2-transfixed \
               /d:sonar.login=$SONAR_TOKEN \
               /d:sonar.host.url=https://sonarcloud.io/ \
               /d:sonar.javascript.exclusions=**/P2Translator.Client/wwwroot/** \
@@ -56,13 +56,13 @@ stages:
         pool:
           vmImage: ubuntu-18.04
         steps:
-          - script: docker image build -f ./dockerfile -t revaturep2translator/p2translator:$BUILD_NAME .
+          - script: docker image build -f ./dockerfile -t revaturep2translator/p2transfixed:$BUILD_NAME .
             env:
               BUILD_NAME: $(Build.DefinitionName)
           - script: docker login --username $DOCKER_USER --password $DOCKER_TOKEN
             env:
               DOCKER_TOKEN: $(docker.token)
               DOCKER_USER: $(docker.user)
-          - script: docker image push revaturep2translator/p2translator:$BUILD_NAME
+          - script: docker image push revaturep2translator/p2transfixed:$BUILD_NAME
             env:
               BUILD_NAME: $(Build.DefinitionName)
