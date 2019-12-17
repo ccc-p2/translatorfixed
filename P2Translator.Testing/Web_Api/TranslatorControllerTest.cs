@@ -12,12 +12,5 @@ namespace P2Translator.Testing.Web_Api
     {
         this._db = _db;
     }
-    [Fact]
-    public void TestGetAllLanguages()
-    {
-      var sut = new TranslatorController(_db);
-      var actual = sut.GetLanguages() as List<string>;
-      Assert.True(actual.Count > 1);
-    }
   }
 }
