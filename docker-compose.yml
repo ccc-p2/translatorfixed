@@ -10,7 +10,7 @@ services:
     depends_on: 
       - "api"
     build:
-      context: ../P2Translator
+      context: ../P2Transfixed
       dockerfile: docker-client.dockerfile
     ports:
       - "5000:80"
@@ -23,7 +23,7 @@ services:
     depends_on: 
       - "postgres_image"
     build: 
-      context: ../P2Translator
+      context: ../P2Transfixed
       dockerfile: docker-api.dockerfile
     volumes: 
       - ./P2Translator.WebApi:/usr/src/app
