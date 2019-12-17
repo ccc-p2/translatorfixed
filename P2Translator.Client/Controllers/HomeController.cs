@@ -48,17 +48,22 @@ namespace P2Translator.Client.Controllers
             // ViewBag.UserLanguage = "English";
             return View();
         }
-        // [HttpPost]
-        // public async Task<IActionResult> CreateMessage()
-        // {
-        //   string url = $"http://localhost:5050/api/translator/post";
-        //   HttpClient request = new HttpClient();
-        //   var response = await request.GetAsync(url);
-        //   List<Message> allMessages = JsonConvert.DeserializeObject<List<Message>>(response.Content.ReadAsStringAsync().Result);
-        //   ViewBag.Messages = allMessages;
-        //   // ViewBag.UserLanguage = "English";
-        //   return View();
-        // }
+        [HttpPost]
+        public async Task<IActionResult> CreateMessage(MessageViewModel m)
+        {
+          if(ModelState.IsValid)
+          {
+            
+            string url = $"http://localhost:5050/api/translator/post";
+            HttpClient request = new HttpClient();
+            Message newMessage = new Message();
+            newMessage.Content = m.Content;
+            var response = await request.PostAsJsonAsync(url, newMessage);
+            return RedirectToAction("MessageBoard", "Home");
+          }
+          return RedirectToAction("MessageBoard", "Home");
+          
+        }
         public async Task<IActionResult> Index()
         { 
             string url = "http://localhost:5050/api/translator/getmessages";
