@@ -40,7 +40,7 @@ namespace P2Translator.Client.Controllers
         [HttpPost]
         public async Task<IActionResult> MessageBoard(MessageBoardViewModel board)
         {
-          string url = $"http://localhost:5050/api/translator/getmessages/{board}";
+          string url = $"http://localhost:5050/api/translator/getmessages/{board.Language}";
             HttpClient request = new HttpClient();
             var response = await request.GetAsync(url);
             List<Message> allMessages = JsonConvert.DeserializeObject<List<Message>>(response.Content.ReadAsStringAsync().Result);
