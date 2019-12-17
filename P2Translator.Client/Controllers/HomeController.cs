@@ -7,7 +7,10 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using P2Translator.Client.Models;
+using P2Translator.Data.Models;
+
 
 namespace P2Translator.Client.Controllers
 {
@@ -23,10 +26,50 @@ namespace P2Translator.Client.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> MessageBoard()
+        {
+          string url = "http://localhost:5050/api/translator/getmessages";
+            HttpClient request = new HttpClient();
+            var response = await request.GetAsync(url);
+            List<Message> allMessages = JsonConvert.DeserializeObject<List<Message>>(response.Content.ReadAsStringAsync().Result);
+            ViewBag.Messages = allMessages;
+            // ViewBag.UserLanguage = "English";
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> MessageBoard(MessageBoardViewModel board)
+        {
+          string url = $"http://localhost:5050/api/translator/getmessages/{board}";
+            HttpClient request = new HttpClient();
+            var response = await request.GetAsync(url);
+            List<Message> allMessages = JsonConvert.DeserializeObject<List<Message>>(response.Content.ReadAsStringAsync().Result);
+            ViewBag.Messages = allMessages;
+            // ViewBag.UserLanguage = "English";
+            return View();
+        }
+        // [HttpPost]
+        // public async Task<IActionResult> CreateMessage()
+        // {
+        //   string url = $"http://localhost:5050/api/translator/post";
+        //   HttpClient request = new HttpClient();
+        //   var response = await request.GetAsync(url);
+        //   List<Message> allMessages = JsonConvert.DeserializeObject<List<Message>>(response.Content.ReadAsStringAsync().Result);
+        //   ViewBag.Messages = allMessages;
+        //   // ViewBag.UserLanguage = "English";
+        //   return View();
+        // }
         public async Task<IActionResult> Index()
         { 
-            string url = "api/translator/getlanguages";
-            var allLanguages = await _http.GetLanguagesAsync(url);
+            string url = "http://localhost:5050/api/translator/getmessages";
+            HttpClient request = new HttpClient();
+            var response = await request.GetAsync(url);
+            // response.Content
+            // var response = client(request).Result;
+            // var jsonResponse = response.Content.ReadAsStringAsync().Result;
+            var deserialized = JsonConvert.DeserializeObject<List<Message>>(response.Content.ReadAsStringAsync().Result);
+            foreach(var m in deserialized)
+              Console.WriteLine(m.Content);
             return View();
         }
 
